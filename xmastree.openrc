@@ -3,6 +3,6 @@
 name="xmastree"
 description="PiHut 3D Xmas Tree"
 command="/usr/local/bin/xmastree"
-command_user="viny"
+command_user="santa"
 pidfile="/run/xmastree.pid"
 command_background="yes"

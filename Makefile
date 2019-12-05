@@ -3,20 +3,18 @@ ENV = /usr/bin/env
 
 .SHELLFLAGS = -c
 
-.SILENT: ;
 .ONESHELL: ;
 .NOTPARALLEL: ;
 .EXPORT_ALL_VARIABLES:
 
 .PHONY: all
-.DEFAULT: help
+.DEFAULT_GOAL := help
+
+LDFLAGS = -ldflags "-w -s"
 
 help: ## Show Help
-	grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+	@exit 1
 
-build-pizerow: ## Build the app
-	GOOS=linux GOARCH=arm GOARM=6 go build
-
-pizerow: build-pizerow	## Copy the app on pizerow.local
-	scp xmastree pizerow.local:/tmp
-	scp xmastree.openrc pizerow.local:/tmp
+build-arm6: ## Build for ARMv6 (pizero)
+	GOOS=linux GOARCH=arm GOARM=6 go build ${LDFLAGS}
