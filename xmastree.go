@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/stianeikeland/go-rpio"
+	"github.com/stianeikeland/go-rpio/v4"
 )
 
 // The Xmastree has a total of 25 LEDS

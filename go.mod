@@ -1,5 +1,5 @@
 module xmastree
 
-require github.com/stianeikeland/go-rpio v4.2.0+incompatible
+require github.com/stianeikeland/go-rpio/v4 v4.6.0 // indirect
 
-go 1.13
+go 1.19
